@@ -1,0 +1,28 @@
+spring:
+  redis:
+    host: 192.168.0.130
+    #assword: 123456
+    port: 6379
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.0.130:3306/db_quzu_cloud
+      username: root
+      password: 123456
+  application:
+    name: provider-server
+  profiles:
+    active: test
+logging:
+  level:
+    root: info
+    org.hibernate : info
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.quzu.soft : debug
+server:
+  port: 8100

@@ -1,0 +1,52 @@
+
+server:
+  port: 8000
+
+cas:
+  server-url-prefix: http://cas.j2ee.vip
+  server-login-url: http://cas.j2ee.vip/login
+  client-host-url: http://localhost:8101
+  validation-type: cas
+spring:
+  redis:
+    host: 192.168.0.130
+    password:
+    port: 6379
+    database: 0
+  application:
+    name: user-server
+  jta:
+    atomikos:
+      properties:
+        log-base-dir: D:\\logs\\qz-cloud\\qz-user\\transaction-logs
+        log-base-name: qz-user-transaction
+
+rabbitmq:
+  addresses: 192.168.0.130
+  port: 5672
+  username: admin
+  password: admin
+  publisher-confirms: true
+  publisher-returns: true
+  virtual-host-admin: qz
+  listener:
+    simple:
+      acknowledge-mode: auto
+      prefetch: 10
+      concurrency: 10
+
+#  多数据源配置
+mysql:
+  datasource:
+    db-user:
+      url: jdbc:mysql://192.168.0.130:3306/db_quzu_user?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+      minPoolSize: 3
+      maxPoolSize: 25
+      maxLifetime: 20000
+      borrowConnectionTimeout: 30
+      loginTimeout: 30
+      maintenanceInterval: 60
+      maxIdleTime: 60
+      testQuery: select 1
